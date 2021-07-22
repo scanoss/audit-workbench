@@ -4,20 +4,23 @@ on: [push, pull_request]
 
 jobs:
   release:
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      - name: Install Node.js, NPM and Yarn
+      - name: Install Node.js and NPM
         uses: actions/setup-node@v1
         with:
           node-version: 15
+
+      - name: Install Yarn
+        run: npm install -g yarn
 
       - name: yarn install
         run: |
@@ -31,3 +34,7 @@ jobs:
           yarn lint
           yarn tsc
           yarn test
+      
+      - name: Uninstall Yarn
+        if: always()
+        run: npm uninstall -g yarn
