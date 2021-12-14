@@ -11,13 +11,18 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
+    
       - name: Check out Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
 
       - name: Install Node.js and NPM
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: '14'
 
       - name: Install Yarn
         run: npm install -g yarn
