@@ -8,10 +8,10 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
-    
+
       - name: Check out Git repository
         uses: actions/checkout@v2
       
