@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
 
@@ -19,12 +19,12 @@ jobs:
       #   with:
       #     python-version: '2.7'
 
-      - name:  Install
-        run: |
-             if [ "$RUNNER_OS" == "Windows" ]; then
-                npm install --global --production windows-build-tools@5.2.2
-             fi
-        shell: bash
+      # - name:  Install
+      #   run: |
+      #        if [ "$RUNNER_OS" == "Windows" ]; then
+      #           npm install --global --production windows-build-tools@5.2.2
+      #        fi
+      #   shell: bash
 
       - name: Install Node.js and NPM
         uses: actions/setup-node@v2
